@@ -1,4 +1,4 @@
-;; Time-stamp: <2021-12-14 23:28:01 kmodi>
+;; Time-stamp: <2022-05-10 12:35:16 ardie>
 ;; Author: Kaushal Modi
 
 ;; Global variables
@@ -401,3 +401,105 @@ need Org version to be at least 9.x.")
 
 (when modi/gc-cons-threshold--orig
   (run-with-idle-timer 5 nil (lambda () (setq gc-cons-threshold modi/gc-cons-threshold--orig))))
+
+
+;; ==================== Ardie ====================
+
+(global-set-key (kbd "S-<left>") 'backward-char)
+(global-set-key (kbd "S-<right>") 'forward-char)
+(global-set-key (kbd "S-<up>") 'previous-line)
+(global-set-key (kbd "S-<down>") 'next-line)
+
+(defun ardie-open-kodland(someVar)
+  "my function to open kodland"
+  (interactive "p")
+  (find-file "/home/ardie/Documents/kodlandSourceDocs/mainKodland.org")
+  (toggle-read-only)
+  )
+
+(global-set-key (kbd "C-S-c C-, o k") 'ardie-open-kodland)
+
+;; Ardie: related link, useful read: https://www.masteringemacs.org/article/mastering-key-bindings-emacs
+;; So you dont need mode hook tricks, but can I also use this for mode-specific keybindings
+;; taken from https://www.reddit.com/r/emacs/comments/6sgwfc/how_do_i_set_a_key_binding_only_for_a_particular/
+(with-eval-after-load "org"
+  (define-key org-mode-map (kbd "S-<left>") 'backward-char)
+  (define-key org-mode-map (kbd "S-<right>") 'forward-char)
+  (define-key org-mode-map (kbd "S-<up>") 'previous-line)
+  (define-key org-mode-map (kbd "S-<down>") 'next-line)
+  (define-key org-mode-map (kbd "C-S-c C-, o k") 'ardie-open-kodland)
+
+  )
+
+
+(with-eval-after-load "dired"
+  (define-key dired-mode-map (kbd "C-S-c C-, w") #'wdired-change-to-wdired-mode)
+  )
+
+
+
+
+(setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "xdg-open")
+
+(defun ardie-get-cwd(someVar)
+    "simple get working directory"
+    (interactive "p")
+    (kill-new default-directory)
+    )
+(global-set-key (kbd "C-S-c C-, d") 'ardie-get-cwd)
+
+(defun ardie-iconify-frame(someVar)
+  "my function around iconify frame"
+  (interactive "p")
+  (iconify-frame)
+  )
+
+(global-set-key (kbd "C-c C-, m") 'ardie-iconify-frame)
+
+;; ---------- interesting tiny-expand vim-like expansion, not sure if I will use this everyday
+(global-set-key (kbd "C-S-c C-, t s") (lambda(someVar) (interactive "p")(insert "m1\\\ n10|someArray[%01d]")))
+(global-set-key (kbd "C-S-c C-, t e") 'tiny-expand)
+
+
+
+
+(use-package org-roam
+  ;; :ensure t
+  :custom
+  (org-roam-directory "/home/ardie/Documents/2022/org-roam")
+              :bind (("C-S-c n l" . org-roam-buffer-toggle)
+                     ("C-S-c n f" . org-roam-node-find)
+                     ("C-S-c n i" . org-roam-node-insert))
+              :config
+              (org-roam-setup)
+              )
+
+
+
+;; default open org with images
+(setq org-startup-with-inline-images t)
+
+(setq org-startup-folded t)
+
+
+;; original user doesnt fully understand this, but it works to replace open in new window
+(defun org-open-current-frame ()
+    "Opens file in current frame."
+    (interactive)
+    (let ((org-link-frame-setup (cons (cons 'file 'find-file) org-link-frame-setup)))
+      (org-open-at-point)))
+(define-key global-map (kbd "C-c <C-return>") 'org-open-current-frame)
+
+;; ---------- My hooks (should document and practice) ----------
+
+;; (add-hook 'shell-mode-hook #'hs-minor-mode)
+(add-hook 'sh-mode-hook #'electric-pair-local-mode)
+
+;; not exactly a hook
+;; (with-eval-after-load 'org
+;;   (bind-key "C-c a" #'org-agenda org-mode-map))
+
+;; -------------------------------------------------------------
+
+;; ==================== Ardie ====================
+(put 'dired-find-alternate-file 'disabled nil)
