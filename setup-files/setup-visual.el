@@ -1,4 +1,4 @@
-;; Time-stamp: <2022-05-13 09:33:39 ardie>
+;; Time-stamp: <2022-05-14 08:12:15 ardie>
 
 ;; Set up the looks of emacs
 
@@ -200,9 +200,9 @@ the smart-mode-line theme."
 
 (defconst default-dark-theme-fn  'load-theme/smyx
   "Function to set the default dark theme.")
-(defconst default-light-theme-fn 'load-theme/leuven
+(defconst default-light-theme-fn 'load-theme/tao-yang
   "Function to set the default light theme.")
-(defconst default-theme-fn default-dark-theme-fn
+(defconst default-theme-fn default-light-theme-fn
   "Function to set the default theme.")
 
 (defun toggle-theme ()

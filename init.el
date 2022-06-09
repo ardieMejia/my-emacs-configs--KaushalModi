@@ -1,4 +1,4 @@
-;; Time-stamp: <2022-05-10 12:35:16 ardie>
+;; Time-stamp: <2022-06-09 01:32:12 ardie>
 ;; Author: Kaushal Modi
 
 ;; Global variables
@@ -405,6 +405,8 @@ need Org version to be at least 9.x.")
 
 ;; ==================== Ardie ====================
 
+
+
 (global-set-key (kbd "S-<left>") 'backward-char)
 (global-set-key (kbd "S-<right>") 'forward-char)
 (global-set-key (kbd "S-<up>") 'previous-line)
@@ -459,6 +461,10 @@ need Org version to be at least 9.x.")
 ;; ---------- interesting tiny-expand vim-like expansion, not sure if I will use this everyday
 (global-set-key (kbd "C-S-c C-, t s") (lambda(someVar) (interactive "p")(insert "m1\\\ n10|someArray[%01d]")))
 (global-set-key (kbd "C-S-c C-, t e") 'tiny-expand)
+;; ---------- more of the same
+(global-set-key (kbd "C-S-c C-, t c") (lambda(someVar) (interactive "p")(insert "m1\\\ n10|# ----------")))
+(global-set-key (kbd "C-S-c C-, t e") 'tiny-expand)
+
 
 
 
@@ -489,6 +495,35 @@ need Org version to be at least 9.x.")
     (let ((org-link-frame-setup (cons (cons 'file 'find-file) org-link-frame-setup)))
       (org-open-at-point)))
 (define-key global-map (kbd "C-c <C-return>") 'org-open-current-frame)
+
+;; change colors if ivy-switch-buffer
+;; doesnt work
+;; (setq ivy-switch-buffer-faces-alist
+;;       '((emacs-lisp-mode . swiper-match-face-1)
+;;         (dired-mode . diredp-rare-priv)
+;;         (org-mode . org-level-4)))
+
+
+
+(require 'swiper)
+(progn
+  (set-face-attribute 'ivy-current-match nil :foreground "white")
+  (set-face-attribute 'ivy-minibuffer-match-face-2 nil :foreground "white" :background "orange")
+    ;;
+
+)
+
+
+
+
+
+(set-face-attribute 'default nil
+                    :family "Source Code Pro"
+                    :height 130
+                    :weight 'semi-bold
+                    :width 'normal)
+
+
 
 ;; ---------- My hooks (should document and practice) ----------
 
