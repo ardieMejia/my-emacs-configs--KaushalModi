@@ -1,4 +1,4 @@
-;; Time-stamp: <2022-05-14 08:12:15 ardie>
+;; Time-stamp: <2022-07-06 16:00:18 ardie>
 
 ;; Set up the looks of emacs
 
@@ -198,11 +198,14 @@ the smart-mode-line theme."
 (modi/gen-all-theme-fns)
 ;; (pp (macroexpand '(modi/gen-all-theme-fns))) ;For debug
 
-(defconst default-dark-theme-fn  'load-theme/smyx
+(defconst default-dark-theme-fn  (load-theme 'dracula t)
   "Function to set the default dark theme.")
-(defconst default-light-theme-fn 'load-theme/tao-yang
+;; ===== Ardie: remember it looks like this
+;; (defconst default-dark-theme-fn  'load-theme/tao-yin
+  ;; "Function to set the default dark theme.")
+(defconst default-light-theme-fn (load-theme 'emacs-21 t)
   "Function to set the default light theme.")
-(defconst default-theme-fn default-light-theme-fn
+(defconst default-theme-fn default-dark-theme-fn
   "Function to set the default theme.")
 
 (defun toggle-theme ()

@@ -1,4 +1,4 @@
-;; Time-stamp: <2022-06-09 01:32:12 ardie>
+;; Time-stamp: <2022-07-06 16:01:04 ardie>
 ;; Author: Kaushal Modi
 
 ;; Global variables
@@ -131,6 +131,7 @@ need Org version to be at least 9.x.")
     wolfram ; query wolframalpha; needs user to sign up for a developer AppID
     wordnut ; offline dictionary (requires installing Wordnet wn application)
     wrap-region ; wrap selection with punctuations, tags (org-mode, markdown-mode, ..)
+
     writegood-mode ; highlight passive voice, weasel words and duplicates
     xkcd ; comic
     yafolding ; indentation detected code folding
@@ -412,14 +413,17 @@ need Org version to be at least 9.x.")
 (global-set-key (kbd "S-<up>") 'previous-line)
 (global-set-key (kbd "S-<down>") 'next-line)
 
-(defun ardie-open-kodland(someVar)
-  "my function to open kodland"
-  (interactive "p")
-  (find-file "/home/ardie/Documents/kodlandSourceDocs/mainKodland.org")
-  (toggle-read-only)
-  )
+(load "~/.emacs.d/ardie_my_files/ardie-load-shortcuts.el")
+(load "~/.emacs.d/ardie_my_files/from_others.el")
 
-(global-set-key (kbd "C-S-c C-, o k") 'ardie-open-kodland)
+
+;; (load "~/.emacs.d/ardie_my_files/my_quick_shortcuts.el")
+(defun my-load-quick ()
+  (interactive)
+  (load "~/.emacs.d/ardie_my_files/my_quick_shortcuts.el"))
+(global-set-key (kbd "C-S-c C-, q") 'my-load-quick)
+
+
 
 ;; Ardie: related link, useful read: https://www.masteringemacs.org/article/mastering-key-bindings-emacs
 ;; So you dont need mode hook tricks, but can I also use this for mode-specific keybindings
@@ -442,6 +446,14 @@ need Org version to be at least 9.x.")
 
 
 (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "xdg-open")
+(setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "xdg-open")
+
+
+
+
+
+
+
 
 (defun ardie-get-cwd(someVar)
     "simple get working directory"
@@ -524,15 +536,29 @@ need Org version to be at least 9.x.")
                     :width 'normal)
 
 
+(helm-mode 1)
 
 ;; ---------- My hooks (should document and practice) ----------
 
-;; (add-hook 'shell-mode-hook #'hs-minor-mode)
-(add-hook 'sh-mode-hook #'electric-pair-local-mode)
+;; (add-hook 'shell-mode-hook #'hs-mode-minor)
+;; Once upon a time, the sharp quote was necessary for lambdas, now that's no longer the case.
+;; so we can # infront of quote ' as below
+(add-hook 'sh-mode-hook 'electric-pair-local-mode)
 
 ;; not exactly a hook
 ;; (with-eval-after-load 'org
 ;;   (bind-key "C-c a" #'org-agenda org-mode-map))
+
+;; ===== this hook works!!
+
+ (defun save-all ()
+    (interactive)
+    (save-some-buffers t))
+
+(add-hook 'focus-out-hook 'save-all)
+
+;; ===== I dont think this one is needed
+(load-theme 'dracula t)
 
 ;; -------------------------------------------------------------
 

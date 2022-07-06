@@ -1,4 +1,4 @@
-;; Time-stamp: <2022-02-11 13:04:48 kmodi>
+;; Time-stamp: <2022-06-27 07:15:47 ardie>
 
 ;; Package management
 ;; Loading of packages at startup
@@ -123,7 +123,7 @@ to be installed.")
 
 (when modi/missing-packages
   (message "Emacs is now refreshing its package database...")
-  (package-refresh-contents)
+
   ;; Install the missing packages
   (dolist (p modi/missing-packages)
     (message "Installing `%s' .." p)
