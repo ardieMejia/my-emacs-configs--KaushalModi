@@ -1,4 +1,4 @@
-;; Time-stamp: <2022-07-06 16:01:04 ardie>
+;; Time-stamp: <2022-07-19 16:22:24 ardie>
 ;; Author: Kaushal Modi
 
 ;; Global variables
@@ -417,11 +417,11 @@ need Org version to be at least 9.x.")
 (load "~/.emacs.d/ardie_my_files/from_others.el")
 
 
-;; (load "~/.emacs.d/ardie_my_files/my_quick_shortcuts.el")
-(defun my-load-quick ()
-  (interactive)
-  (load "~/.emacs.d/ardie_my_files/my_quick_shortcuts.el"))
-(global-set-key (kbd "C-S-c C-, q") 'my-load-quick)
+(load "~/.emacs.d/ardie_my_files/my_quick_shortcuts.el")
+;; (defun my-load-quick ()
+;;   (interactive)
+;;   (load "~/.emacs.d/ardie_my_files/my_quick_shortcuts.el"))
+;; (global-set-key (kbd "C-S-c C-, q") 'my-load-quick)
 
 
 
