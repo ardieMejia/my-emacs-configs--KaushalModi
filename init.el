@@ -1,4 +1,4 @@
-;; Time-stamp: <2022-07-19 16:22:24 ardie>
+;; Time-stamp: <2023-02-18 16:51:50 ardie>
 ;; Author: Kaushal Modi
 
 ;; Global variables
@@ -500,6 +500,10 @@ need Org version to be at least 9.x.")
 (setq org-startup-folded t)
 
 
+;; hide italic slashes in org mode
+(setq org-hide-emphasis-markers t)
+
+
 ;; original user doesnt fully understand this, but it works to replace open in new window
 (defun org-open-current-frame ()
     "Opens file in current frame."
@@ -537,6 +541,19 @@ need Org version to be at least 9.x.")
 
 
 (helm-mode 1)
+
+(quail-define-package
+ "Emoji" "UTF-8" "😎" t
+ "Emoji input mode for people that really, really like Emoji"
+ '(("\t" . quail-completion))
+ t t nil nil nil nil nil nil nil t)
+
+(quail-define-rules
+ (":)" ?😀)
+ (":P" ?😋)
+ (":D" ?😂)
+ ("/D" ?🤣)
+ (":thumb:" ?👍))
 
 ;; ---------- My hooks (should document and practice) ----------
 
