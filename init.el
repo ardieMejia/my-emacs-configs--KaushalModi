@@ -544,16 +544,16 @@ need Org version to be at least 9.x.")
 
 
 
-(use-package org-roam
-  ;; :ensure t
-  :custom
-  (org-roam-directory "/home/ardie/Documents/2022/org-roam")
-              :bind (("C-S-c n l" . org-roam-buffer-toggle)
-                     ("C-S-c n f" . org-roam-node-find)
-                     ("C-S-c n i" . org-roam-node-insert))
-              :config
-              (org-roam-setup)
-              )
+;; (use-package org-roam
+;;   ;; :ensure t
+;;   :custom
+;;   (org-roam-directory "/home/ardie/Documents/2022/org-roam")
+;;               :bind (("C-S-c n l" . org-roam-buffer-toggle)
+;;                      ("C-S-c n f" . org-roam-node-find)
+;;                      ("C-S-c n i" . org-roam-node-insert))
+;;               :config
+;;               (org-roam-setup)
+;;               )
 
 
 
