@@ -649,9 +649,11 @@ need Org version to be at least 9.x.")
 ;; ---------- My hooks (should document and practice) ----------
 
 ;; (add-hook 'shell-mode-hook #'hs-mode-minor)
-;; Once upon a time, the sharp quote was necessary for lambdas, now that's no longer the case.
+;; Once upon a time, the sharp quote wsas necessary for lambdas, now that's no longer the case.
 ;; so we can # infront of quote ' as below
 (add-hook 'sh-mode-hook 'electric-pair-local-mode)
+(add-hook 'lisp-mode-hook 'electric-pair-local-mode)
+(add-hook 'python-mode-hook 'electric-pair-local-mode)
 
 ;; not exactly a hook
 ;; (with-eval-after-load 'org
