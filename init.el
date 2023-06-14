@@ -510,7 +510,7 @@ need Org version to be at least 9.x.")
 
 
 (with-eval-after-load "dired"
-  (define-key dired-mode-map (kbd "C-S-c C-, w") #'wdired-change-to-wdired-mode)
+  (define-key dired-mode-map (kbd "C-S-c , w") #'wdired-change-to-wdired-mode)
   )
 
 
