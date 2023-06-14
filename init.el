@@ -644,7 +644,85 @@ need Org version to be at least 9.x.")
  (":P" ?😋)
  (":D" ?😂)
  ("/D" ?🤣)
- (":thumb:" ?👍))
+ ("|m" ?👍)
+ ("m|" ?👎)
+ ("mm" ?😍)
+ )
+
+(quail-define-package
+ "My Greek" "UTF-8" "α" t
+ "Selective Greek input mode for my own experiment"
+ '(("\t" . quail-completion))
+ t t nil nil nil nil nil nil nil t)
+
+(quail-define-rules
+ ("/a" ?α)
+ ("/b" ?β)
+ ("/mu" ?μ)
+ ("/g" ?γ)
+ ("/e" ?ε)
+ )
+
+;; ========== my first cool hydra, it WORKS!! ==========
+(defhydra hydra-ardie-cool-keys (global-map "C-S-c n")
+  "something"
+  ("p" previous-line "going up")
+  ("<up>" previous-line "going up")
+
+  ("n" next-line "going down")
+  ("<down>" next-line "going down")
+
+
+  ("<right>" forward-char "forward")
+  ("<left>" backward-char "backward")
+
+  ("m" set-mark-command "set mark")
+  ("u" (deactivate-mark t) "de-mark")
+  ("r" kill-region "kill region")
+  ("w" kill-ring-save "save in kill ring")
+
+
+  ("f" right-word "right word")
+  ("b" left-word "left word")
+
+
+  ("k" kill-line "killing line")
+  ("a" beginning-of-line "start of line")
+  ("e" end-of-line "end of line")
+
+
+  ("d" hungry-delete-forward "delete character")
+  ("q" nil)
+  )
+;; ========== my first cool xihydra, it WORKS!! ==========
+
+;; ========== mu4e configs ==========
+(use-package mu4e
+  :ensure nil
+  ;; :load-path "/usr/share/emacs/site-lisp/mu4e/"
+  :defer 20 ; Wait until 20 seconds after startup
+  :config
+
+  ;; This is set to 't' to avoid mail syncing issues when using mbsync
+  (setq mu4e-change-filenames-when-moving t)
+
+  ;; Refresh mail using isync every 10 minutes
+  (setq mu4e-update-interval (* 10 60))
+  (setq mu4e-get-mail-command "mbsync -a")
+  (setq mu4e-maildir "~/Mail/Gmail_wanardiemejia")
+
+  (setq mu4e-drafts-folder "/Drafts")
+  (setq mu4e-sent-folder   "/Sent")
+  (setq mu4e-refile-folder "/Archive")
+  (setq mu4e-trash-folder  "/Trash")
+;; /home/ardie/Mail/Gmail_wanardiemejia
+  (setq mu4e-maildir-shortcuts
+      '((:maildir "/Inbox"             :key ?i)
+        (:maildir "/Sent" :key ?s)
+        (:maildir "/Trash"     :key ?t)
+        (:maildir "/Drafts"    :key ?d)
+        (:maildir "/Archive"  :key ?a))))
+;; ==================================
 
 ;; ---------- My hooks (should document and practice) ----------
 
