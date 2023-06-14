@@ -50,7 +50,7 @@ need Org version to be at least 9.x.")
 (defconst my-packages
   '(ace-window
     adaptive-wrap ; indented line wrapping
-    ag wgrep wgrep-ag s ; ag > ack > grep
+    ;; ag wgrep wgrep-ag s ; ag > ack > grep
                                         ; wgrep+wgrep-ag allow editing files
                                         ; directly in ag buffer
     all all-ext ; edit ALL lines matching regex
@@ -59,8 +59,8 @@ need Org version to be at least 9.x.")
     auto-complete fuzzy
     auto-highlight-symbol
     avy ; > ace-jump-mode
-    beacon ; visual flash to show the cursor position
-    bm ; visual bookmarks
+    ;; beacon ; visual flash to show the cursor position
+    ;; bm ; visual bookmarks
     buffer-move
     command-log-mode ; for logging commands; useful when demoing emacs
     deft ; quick note taking and management
@@ -72,15 +72,15 @@ need Org version to be at least 9.x.")
     engine-mode ; search engines
     expand-region
     eww-lnum ; jump to links in eww buffer ace-jump style
-    fill-column-indicator
+    ;; fill-column-indicator
     flycheck                    ; sh-shellcheck
     flyspell-correct-ivy ; ivy interface for correct spelling suggestions
     fold-this
-    gist
+    ;; gist
     git-timemachine ; walk through git revisions
     ggtags ctags-update
     hardcore-mode
-    hideshow-org
+    ;; hideshow-org
     htmlize
     hungry-delete
     hydra
@@ -133,7 +133,7 @@ need Org version to be at least 9.x.")
     wrap-region ; wrap selection with punctuations, tags (org-mode, markdown-mode, ..)
 
     writegood-mode ; highlight passive voice, weasel words and duplicates
-    xkcd ; comic
+    ;; Ardie ----- xkcd ; comic
     yafolding ; indentation detected code folding
     yaml-mode ; Useful for editing Octopress' _config.yml
     yasnippet
@@ -270,9 +270,9 @@ need Org version to be at least 9.x.")
 (require 'setup-kurecolor)
 (require 'setup-linum)
 (require 'setup-manage-minor-mode)
-(require 'setup-mastodon)
+;; Ardie ----- (require 'setup-mastodon)
 (require 'setup-multiple-cursors)
-(require 'setup-neotree)
+;; Ardie ----- (require 'setup-neotree)
 (require 'setup-news)
 (require 'setup-nov)
 (require 'setup-org)
@@ -281,8 +281,8 @@ need Org version to be at least 9.x.")
   (require 'setup-p4))
 (require 'setup-page-break-lines)
 (require 'setup-pcache)
-(require 'setup-pomodoro)
-(require 'setup-poporg)
+;; Ardie ----- (require 'setup-pomodoro)
+;; Ardie ----- (require 'setup-poporg)
 (with-eval-after-load 'setup-tags
   ;; Below causes `help-function-arglist' error on evaluating "(string-match-p "." nil)"
   ;; on emacs 25.1 or older.
@@ -298,7 +298,7 @@ need Org version to be at least 9.x.")
 (require 'setup-tiny)
 (require 'setup-tldr)
 ;; (require 'setup-undo-tree)
-(require 'setup-weather)
+;; Ardie ----- (require 'setup-weather)
 (require 'setup-webpaste)
 (require 'setup-which-func)
 (require 'setup-which-key)
@@ -307,7 +307,7 @@ need Org version to be at least 9.x.")
   (require 'setup-wordnut))
 (require 'setup-wrap-region)
 (require 'setup-writegood)
-(require 'setup-xkcd)
+;; Ardie ----- (require 'setup-xkcd)
 (require 'setup-yasnippet)
 
 ;; Languages
@@ -322,7 +322,7 @@ need Org version to be at least 9.x.")
   (require 'setup-matlab))
 (when (executable-find "nim")
   (require 'setup-nim))
-(require 'setup-perl)
+;; Ardie ----- (require 'setup-perl)
 (require 'setup-python)
 (require 'setup-shell)
 (require 'setup-spice)
