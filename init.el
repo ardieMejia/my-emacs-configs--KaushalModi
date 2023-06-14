@@ -500,6 +500,14 @@ need Org version to be at least 9.x.")
 
   )
 
+;; The better command, is C-c C-, (which is for --> org-insert-structure-template)
+;; thats better than < (which is for modi/org-template-maybe)
+;; this code might change, as we dont use often
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+
 
 (with-eval-after-load "dired"
   (define-key dired-mode-map (kbd "C-S-c C-, w") #'wdired-change-to-wdired-mode)
