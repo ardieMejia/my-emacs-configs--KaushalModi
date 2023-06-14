@@ -665,8 +665,10 @@ need Org version to be at least 9.x.")
 
 (add-hook 'focus-out-hook 'save-all)
 
-;; ===== I dont think this one is needed
-(load-theme 'dracula t)
+;; ========== I think I accidentally removed this
+(setq split-width-threshold 100)
+
+
 
 ;; -------------------------------------------------------------
 
