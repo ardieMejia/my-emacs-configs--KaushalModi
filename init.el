@@ -565,6 +565,26 @@ need Org version to be at least 9.x.")
 
 
 
+;; creating a list, instead of appending, coz I dont know how to fix this.
+;; (setq yas-snippet-dirs (append yas-snippet-dirs
+;;                                '("~/.emacs.d/ardie_snippets")))
+
+
+(require 'yasnippet)
+;; (yas-global-mode 1)
+(setq yas-snippet-dirs '("~/.emacs.d/ardie_snippets"
+                         "~/.emacs.d/snippets"
+                         ))
+
+;; instead of using yas-global-mode, yas as non-global minor mode. Aka, per-buffer-basis
+(yas-reload-all)
+(add-hook 'prog-mode-hook 'yas-minor-mode)
+(add-hook 'org-mode-hook 'yas-minor-mode)
+
+
+
+
+
 ;; default open org with images
 (setq org-startup-with-inline-images t)
 
