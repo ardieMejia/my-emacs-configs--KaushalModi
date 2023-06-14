@@ -408,6 +408,67 @@ need Org version to be at least 9.x.")
 
 ;; ==================== Ardie ====================
 
+(defun ardie/set-mode-line ()
+  (setq mode-line-format
+        (quote
+         (#("-" 0 1
+            (help-echo
+             "mouse-1: select window, mouse-2: delete others ..."))
+          mode-line-mule-info
+          mode-line-modified
+          mode-line-frame-identification
+          "    "
+
+          mode-line-buffer-identification
+          "    "
+          ;; default-directory
+          (:eval (major-mode))
+
+          #(" " 0 1
+            (help-echo
+             "mouse-1: select window, mouse-2: delete others ..."))
+          (line-number-mode " Line %l ")
+          global-mode-string
+
+          #("   %[(" 0 6
+            (help-echo
+             "mouse-1: select window, mouse-2: delete others ..."))
+          (:eval (format-time-string "%F"))
+          mode-line-process
+
+
+          #("%n" 0 2 (help-echo "mouse-2: widen" local-map (keymap ...)))
+          ")%] "
+          "   "
+          ;; (:eval (ardie/return-mode-emoji_old))
+          (:eval (format "%s" (cond
+                               ((string-search (upcase  "EMACS-LISP") (upcase (format "%s" major-mode))) "😏")
+                               ((string-search (upcase  "ORG") (upcase (format "%s" major-mode))) "⏰")
+                               ((string-search (upcase  "SH-MODE") (upcase (format "%s" major-mode))) "🐚")
+                               ((string-search (upcase  "TEXT-MODE") (upcase (format "%s" major-mode))) "📝")
+                               ((string-search (upcase  "PYTHON-MODE") (upcase (format "%s" major-mode))) "🐍")
+                               (t (format "%s" major-mode)))
+                         ))
+          "--"
+          "    "
+          (-3 . "%P")
+          ;;   "-%-"
+          )))
+  )
+
+
+
+(add-hook 'org-mode-hook #'ardie/set-mode-line)
+(add-hook 'emacs-lisp-mode-hook #'ardie/set-mode-line)
+(add-hook 'sh-mode-hook #'ardie/set-mode-line)
+(add-hook 'python-mode-hook #'ardie/set-mode-line)
+(add-hook 'text-mode-hook #'ardie/set-mode-line)
+
+
+;; (setq message-log-max t)
+
+
+
 
 
 (global-set-key (kbd "S-<left>") 'backward-char)
