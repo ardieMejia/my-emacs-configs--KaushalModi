@@ -195,10 +195,12 @@ the smart-mode-line theme."
              (lambda (x) (modi/gen-theme-fn (nth 0 x) (nth 1 x) (nth 2 x)))
              my/themes)))
 
-(modi/gen-all-theme-fns)
+;; Ardie ----- why am I commenting this?
+;; Ardie -----  (modi/gen-all-theme-fns)
 ;; (pp (macroexpand '(modi/gen-all-theme-fns))) ;For debug
 
-(defconst default-dark-theme-fn  (load-theme 'dracula t)
+(defconst default-dark-theme-fn  'load-theme/ample-flat
+;; (defconst default-dark-theme-fn  (load-theme 'dracula t)
   "Function to set the default dark theme.")
 ;; ===== Ardie: remember it looks like this
 ;; (defconst default-dark-theme-fn  'load-theme/tao-yin
@@ -221,7 +223,21 @@ the smart-mode-line theme."
 ;; ;; `after-make-frame-functions' hook is not run in no-window mode
 ;; (add-hook 'after-make-frame-functions (lambda (&rest frame)
 ;;                                         (funcall default-theme-fn)))
-(add-hook 'window-setup-hook (lambda () (funcall default-theme-fn)))
+;; Ardie ----- why exactly do I have to comment this
+;; (add-hook 'window-setup-hook (lambda () (funcall default-theme-fn)))
+
+;; Ardie ----- Monokai theme only worked from here
+(setq
+ monokai-height-plus-1 1.0
+ monokai-height-plus-2 1.0
+ monokai-height-plus-3 1.0
+ monokai-height-plus-4 1.2
+ )
+(setq
+ monokai-blue           "#679dc9"
+ )
+(add-hook 'window-setup-hook (lambda () (load-theme 'monokai t)))
+
 
 ;;; Frame Title
 (defun modi/update-frame-title ()

@@ -394,9 +394,11 @@ need Org version to be at least 9.x.")
 ;;  - The frame is also selected, and so `find-font' calls work correctly.
 (add-hook 'focus-in-hook #'modi/font-check)
 
-(when (and (bound-and-true-p emacs-initialized)
-           (featurep 'setup-visual))
-  (funcall default-theme-fn)) ; defined in `setup-visual.el'
+;; Ardie ----- strange, I really dont understand what kaushal Modi is doing with all this jumping about,
+;; anyway, I simplified code, by commenting and now my load-theme code actually works here
+;; (when (and (bound-and-true-p emacs-initialized)
+;;            (featurep 'setup-visual))
+;;   (funcall default-theme-fn)) ; defined in `setup-visual.el'
 
 (setq emacs-initialized t)
 
