@@ -533,13 +533,13 @@ need Org version to be at least 9.x.")
     )
 (global-set-key (kbd "C-S-c , d") 'ardie-get-cwd)
 
-(defun ardie-iconify-frame(someVar)
-  "my function around iconify frame"
-  (interactive "p")
-  (iconify-frame)
-  )
+;; (defun ardie-iconify-frame(someVar)
+;;   "my function around iconify frame"
+;;   (interactive "p")
+;;   (iconify-frame)
+;;   )
 
-(global-set-key (kbd "C-c C-, m") 'ardie-iconify-frame)
+;; (global-set-key (kbd "C-c C-, m") 'ardie-iconify-frame)
 
 ;; ---------- interesting tiny-expand vim-like expansion, not sure if I will use this everyday
 (global-set-key (kbd "C-S-c C-, t s") (lambda(someVar) (interactive "p")(insert "m1\\\ n10|someArray[%01d]")))
