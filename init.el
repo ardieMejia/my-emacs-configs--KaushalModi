@@ -531,7 +531,7 @@ need Org version to be at least 9.x.")
     (interactive "p")
     (kill-new default-directory)
     )
-(global-set-key (kbd "C-S-c C-, d") 'ardie-get-cwd)
+(global-set-key (kbd "C-S-c , d") 'ardie-get-cwd)
 
 (defun ardie-iconify-frame(someVar)
   "my function around iconify frame"
